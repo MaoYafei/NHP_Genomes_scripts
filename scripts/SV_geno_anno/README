@@ -1,0 +1,2 @@
+paragraph.smk is used to genotype the SVs with 120 NHP WGS samples.
+vep.sh is used to annotate the SVs with genotyping information. 

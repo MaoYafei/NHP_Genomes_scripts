@@ -1,0 +1,4 @@
+1. Go to page: https://github.com/EichlerLab/sniffles
+2. Clone the github master
+3. Follow the introduction 
+4. Running with snakemake: mkdir -p log; snakemake -s ${PIPELINE_DIR}/Snakefile --ri -j 30 -k --jobname "{rulename}.{jobid}" --drmaa " -V -cwd -e ./log -o ./log -pe serial {cluster.cpu} -l mfree={cluster.mem} -l h_rt={cluster.rt} -j y -w n -S /bin/bash" -w 60 -u ${PIPELINE_DIR}/config/cluster.json --config ldpath=$LD_LIBRARY_PATH

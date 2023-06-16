@@ -1,0 +1,30 @@
+1. Go to page: https://github.com/EichlerLab/pav
+2. Clone the github master
+3. Follow the introduction 
+4. Running with snakemake:
+#!/usr/bin/env bash
+
+# Get directory where the script is located
+SOURCE_DIR=pav/mm2/pav_202012-2
+
+# Modules
+module load miniconda/4.5.12
+module load unimap
+module load minimap2
+# Init
+mkdir -p log
+
+# Get jobs
+JOB_COUNT=$1
+
+shift
+
+# Run
+snakemake -s ${SOURCE_DIR}/Snakefile -j ${JOB_COUNT} --nt --ri -k \
+--jobname "{rulename}.{jobid}" \
+--drmaa " -V -cwd -j y -o ./log -l centos=7 -pe serial {cluster.cpu} -l mfree={cluster.mem} -l disk_free={cluster.disk} -l h_rt={cluster.rt} {cluster.params} -w n -S /bin/bash" \
+-w 60 -u sge.json "$@"
+#or running on docker or singularity
+sudo docker run --rm -v ${PWD}:${PWD} --user "$(id -u):$(id -g)" --workdir ${PWD} becklab/pav:latest -c 16
+singularity run --bind "$(pwd):$(pwd)" library://becklab/pav/pav:latest -c 16
+

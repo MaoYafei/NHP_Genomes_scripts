@@ -1,0 +1,2 @@
+hotspotter.r is R script to simulate the hotspot regions based on p/q arm structure and cooridnates.
+plot_hotspot.r is Rscript to plot the hotspot region simulated from hotspotter.r.

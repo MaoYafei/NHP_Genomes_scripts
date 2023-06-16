@@ -1,0 +1,25 @@
+#This script is used to validated SV by short-read genotyping 
+1. Go to page: https://github.com/KiddLab/fastCN
+2. Clone the github master
+3. Follow the introduction 
+4. Running with snakemake: 
+#!/usr/bin/env bash
+set -euo pipefail
+
+mkdir -p logs/drmaa
+
+export PATH=pipelines/fastCN-smk/bin/:$PATH
+
+snakemake \
+    --drmaa " -l centos=7 -l h_rt=48:00:00 -l mfree={resources.mem}G -pe serial {threads} -V -cwd -S /bin/bash -w n" \
+    --drmaa-log-dir logs/drmaa \
+    --use-conda \
+    --configfile config/config.yaml \
+    --local-cores 20 \
+    --cores 20 \
+    --max-inventory-time 10000 \
+    --resources load=1000 \
+    --scheduler greedy \
+    --latency-wait 60 \
+    --restart-times 3 \
+    "$@"

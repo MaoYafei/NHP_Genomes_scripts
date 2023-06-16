@@ -1,0 +1,2 @@
+SDR_mashmap_calling.smk is used to call the SDR regions.
+SDR_minimap2_validation.smk is used to valdiate SDR regions with length and synplotter.
