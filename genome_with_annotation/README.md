@@ -1,4 +1,4 @@
-Due to size limitation of GitHub, all data are deposited in https://eichlerlab.gs.washington.edu/help/yafmao/NHP_Genomes_scripts/genome_with_annotation/{sample}_scaffolding
+Due to size limitation of GitHub, all data are deposited in https://eichlerlab.gs.washington.edu/help/yafmao/NHP_Genomes_scripts/genome_with_annotation/
 1. genome_with_annotation
 This folder contains 16 genome assemblies and each assembly are named as a subfolder. each subfolder contains 3 files and 2 sufolders (detailed below).
 	#ALL FILES CAN BE UPLOAD TO IGV/JBBROSWER FOR VISUALIZATION
